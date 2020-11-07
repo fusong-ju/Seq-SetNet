@@ -39,7 +39,6 @@ def inference(models, a3m_path, out_path):
     feat = parse_feature(a3m_path)
     with torch.no_grad():
         out = [[] for _ in range(6)]
-        ss3, ss8, sin_phi, cos_phi, sin_psi, cos_psi = [], [], [], [], [], []
         for model in models:
             for x, y in zip(out, model(feat)):
                 x.append(y.cpu().numpy())
